@@ -1,0 +1,15 @@
+[package]
+name = "vec_vec"
+edition = "2021"
+version = "0.1.0"
+authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
+description = "When dealing with `Vec<Vec<T>>` is unavoidable."
+documentation = "https://docs.rs/vec_vec"
+readme = "README.md"
+keywords = ["nested", "vec"]
+categories = ["rust-patterns", "data-structures"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/JohnScience/vec_vec"
+
+[dependencies]
+stack-trait = "0.2"
