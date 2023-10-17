@@ -8,7 +8,7 @@
 
 If you think of using is crate, think again. Generally speaking, `Vec<Vec<T>>` is an antipattern because it is not contiguous -> not cache friendly -> slow. Nearly always, for the buffer you can and should use a newtype arround [`small_vec::SmallVec`] or `Vec<T>`, if possible. For example, if you have a dynamically-sized matrix, you should use the chosen contiguous buffer and maybe some data for dimensions.
 
-However, if you believe that you have a legitimate use case for a nested vector, this crate provides a `PoppingIterator` that you might want to use.
+However, if you believe that you have a legitimate use case for a nested vector, this crate provides a `PoppingIterator`, `LendingIter`, and `LendingIterMut` that you might want to use.
 
 ## Example
 
