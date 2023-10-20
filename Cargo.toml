@@ -1,7 +1,7 @@
 [package]
 name = "vec_vec"
 edition = "2021"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 description = "When dealing with `Vec<Vec<T>>` is unavoidable."
 documentation = "https://docs.rs/vec_vec"

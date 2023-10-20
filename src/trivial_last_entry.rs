@@ -18,6 +18,21 @@ impl<'a, T> TrivialLastEntry<'a, T> {
         }
     }
 
+    pub fn pop_pointee(self) -> T {
+        let outer_idx = match self.0.len().checked_sub(1) {
+            Some(outer_idx) => outer_idx,
+            // this is safe because the invariant guarantees that the Vec<Vec<T>> is never empty.
+            None => unsafe { unreachable_unchecked() },
+        };
+        // this is safe because the invariant guarantees that the last Vec<T> is not empty.
+        let last_inner_vec = unsafe { self.0.get_unchecked_mut(outer_idx) };
+        match last_inner_vec.pop() {
+            Some(pointee) => pointee,
+            // this is safe because the invariant guarantees that the last Vec<T> is not empty.
+            None => unsafe { unreachable_unchecked() },
+        }
+    }
+
     pub fn push_to_outer(&mut self, vec: Vec<T>) -> Option<()> {
         if vec.is_empty() {
             return None;
