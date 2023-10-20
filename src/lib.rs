@@ -3,10 +3,12 @@
 mod lending_iter;
 mod lending_iter_mut;
 mod popping_iter;
+mod trivial_last_entry;
 
 pub use lending_iter::LendingIter;
 pub use lending_iter_mut::LendingIterMut;
 pub use popping_iter::PoppingIter;
+pub use trivial_last_entry::TrivialLastEntry;
 
 /// An [extension trait] for `Vec<Vec<T>>`.
 ///
@@ -25,6 +27,8 @@ pub trait VecVecExt {
 
     /// Returns a [lending iterator] over the shared references to the elements of `Vec<Vec<T>>`.
     fn lending_iter(&self) -> LendingIter<'_, Self::Item>;
+
+    fn trivial_last_entry(&mut self) -> Option<TrivialLastEntry<'_, Self::Item>>;
 }
 
 impl<T> VecVecExt for Vec<Vec<T>> {
@@ -40,5 +44,9 @@ impl<T> VecVecExt for Vec<Vec<T>> {
 
     fn lending_iter(&self) -> LendingIter<'_, Self::Item> {
         LendingIter::new(self)
+    }
+
+    fn trivial_last_entry(&mut self) -> Option<TrivialLastEntry<'_, Self::Item>> {
+        TrivialLastEntry::new(self)
     }
 }

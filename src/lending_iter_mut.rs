@@ -38,10 +38,10 @@ impl<'a, T> LendingIterMut<'a, T> {
         self.container
     }
 
-    /// Returns a mutable reference to the `Vec<Vec<T>>`.
-    pub fn container_mut(&mut self) -> &'_ mut Vec<Vec<T>> {
-        self.container
-    }
+    // /// Returns a mutable reference to the `Vec<Vec<T>>`.
+    // pub fn container_mut(&mut self) -> &'_ mut Vec<Vec<T>> {
+    //     self.container
+    // }
 }
 
 #[gat]
