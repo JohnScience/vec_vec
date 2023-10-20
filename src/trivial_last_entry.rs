@@ -18,6 +18,7 @@ impl<'a, T> TrivialLastEntry<'a, T> {
         }
     }
 
+    /// Removes the last element from the last Vec<T> and returns it.
     pub fn pop_pointee(self) -> T {
         let outer_idx = match self.0.len().checked_sub(1) {
             Some(outer_idx) => outer_idx,
@@ -33,6 +34,7 @@ impl<'a, T> TrivialLastEntry<'a, T> {
         }
     }
 
+    /// Pushes the given vector to the outer vector.
     pub fn push_to_outer(&mut self, vec: Vec<T>) -> Option<()> {
         if vec.is_empty() {
             return None;
