@@ -44,7 +44,7 @@ impl<'a, T> TrivialLastEntry<'a, T> {
     }
 
     /// Checks if the entry is the last in the inner vector.
-    pub fn is_last_in_inner(&mut self) -> bool {
+    pub fn is_last_in_inner(&self) -> bool {
         let outer_idx = match self.0.len().checked_sub(1) {
             Some(outer_idx) => outer_idx,
             None => unsafe { unreachable_unchecked() },
