@@ -42,6 +42,17 @@ impl<'a, T> TrivialLastEntry<'a, T> {
         self.0.push(vec);
         Some(())
     }
+
+    /// Checks if the entry is the last in the inner vector.
+    pub fn is_last_in_inner(&mut self) -> bool {
+        let outer_idx = match self.0.len().checked_sub(1) {
+            Some(outer_idx) => outer_idx,
+            None => unsafe { unreachable_unchecked() },
+        };
+        let last_inner_vec = unsafe { self.0.get_unchecked(outer_idx) };
+        let inner_idx = last_inner_vec.len().checked_sub(1).unwrap();
+        inner_idx == 0
+    }
 }
 
 impl<'a, T> std::ops::Deref for TrivialLastEntry<'a, T> {
